@@ -1,4 +1,4 @@
-CFLAGS=-D_FILE_OFFSET_BITS=64
+CFLAGS=-D_FILE_OFFSET_BITS=64 --std=c11
 
 linux64:	plot plotavx2 
 
@@ -8,7 +8,8 @@ all:		linux64 linux32
 
 dist:		linux64 linux32
 		rm -f bin/* shabal64.o shabal32.o dcct_miner.tgz
-		mv plot plotavx2 bin
+		mkdir bin
+		mv plot plotavx2 plot32 bin
 		tar -czf omdcct_plotter.tgz *
 
 plot:		plot.c shabal64.o helper64.o mshabal_sse4.o 
@@ -18,7 +19,7 @@ plotavx2:	plot.c shabal64.o helper64.o mshabal_sse4.o mshabal256_avx2.o
 		gcc -Wall -m64 -O2 -o plotavx2 plot.c shabal64.o helper64.o mshabal_sse4.o mshabal256_avx2.o -march=native -lpthread -std=gnu99 -DAVX2
 
 plot32:		plot.c shabal32.o helper32.o mshabal_sse432.o
-		gcc -Wall -m32 -O2 -o plot32 plot.c shabal32.o helper32.o mshabal_sse432.o -lpthread
+		gcc -Wall -m32 -O2 -o plot32 plot.c shabal32.o helper32.o mshabal_sse432.o -lpthread -std=gnu99
 
 helper64.o:	helper.c
 		gcc -Wall -m64 -c -O2 -o helper64.o helper.c		

@@ -1,0 +1,5 @@
+.git
+bin
+*.tgz
+Dockerfile
+docker-build.sh
