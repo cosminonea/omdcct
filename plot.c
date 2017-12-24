@@ -672,7 +672,7 @@ int main(int argc, char **argv) {
 		}
 
 		startnonce += staggersize;
-		printf("Nonce %llu/%d(%llu%%) done...", run + 1, nonces, (run + 1) / nonces);
+		printf("Nonce %llu/%d(%llu%%) done...\n", run + 1, nonces, (run + 1) / nonces);
 	}
 	
 	if(asyncmode == 1) pthread_join(writeworker, NULL);
