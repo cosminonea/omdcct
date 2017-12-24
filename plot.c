@@ -356,10 +356,10 @@ void *writecache(void *arguments) {
 	percent = (int)(100 * lastrun / nonces);
 
 	if(asyncmode == 1) {
-		printf("%i Percent done. (ASYNC write)", percent);
+		printf("%i Percent done. (ASYNC write)\n", percent);
 		fflush(stdout);
 	} else {
-		printf("%i Percent done. (write)", percent);
+		printf("%i Percent done. (write)\n", percent);
 		fflush(stdout);
 	}
 
@@ -385,7 +385,7 @@ void *writecache(void *arguments) {
 	int h = (int)(m / 60);
 	m -= h * 60;
 
-	printf("%i Percent done. %i nonces/minute, %i:%02i left", percent, speed, h, m);
+	printf("%i Percent done. %i nonces/minute, %i:%02i left\n", percent, speed, h, m);
 	fflush(stdout);
 
 	return NULL;
